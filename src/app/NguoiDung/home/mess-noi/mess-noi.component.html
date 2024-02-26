@@ -1,0 +1,36 @@
+<div class="ThemGioHang">
+  <div class="close-button">
+    <span (click)="off()" class="close-icon">&times;</span>
+  </div>
+    <div class="tieu-de">
+      <h2>Thêm giỏ hàng</h2>
+      
+    </div>
+    <div class="noi-dung">
+        
+        <img [src]="dataKho[idKho].imageData" alt="null">
+        
+        <h2>Tên sản phẩm: {{dataKho[idKho].name}}</h2>
+
+        <div class="Gia">
+          <div class="Gia">
+            <h2 >Giá gốc: </h2> 
+            <h2 >{{dataKho[idKho].price| number:'1.0-0'}}đ</h2>
+
+            
+          </div>
+         <div class="Gia" style=" color: red;"> <h2>Thàng tiền :{{dataKho[idKho].price*soLuong| number:'1.0-0'}}đ</h2></div>
+          
+        </div>
+       
+
+        <div class="number">
+          <label>Số lượng</label>
+          <input [ngClass]="{'input-soluong':!dieuKien()}" [(ngModel)]="soLuong" id="soLuong" matInput type="number" (keyup)="dieuKien()"  placeholder="Nhập số lượng">
+        </div>
+         
+     
+      <button (click)="them()" [disabled]="isDisabled" mat-raised-button color="primary">Thêm</button>
+    </div>
+  </div>
+  

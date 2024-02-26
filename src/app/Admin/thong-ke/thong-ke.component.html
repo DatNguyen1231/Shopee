@@ -1,0 +1,66 @@
+<div >
+  <button mat-button style="font-size: 20px;" > <mat-icon mat-list-icon class="cc">home</mat-icon> Home / </button>
+  <button mat-button style="font-size: 20px;"> <mat-icon class="nav-icon nav-icon-cart" class="cc">assessment</mat-icon> Thống kê</button>
+  
+</div>
+
+
+<div class="menu">
+    <ul>
+    
+      <li (click)="getGioHangDaMua(3)">Đã giao</li>
+      <li (click)="getGioHangDaMua(4)">Đã hủy</li>
+    </ul>
+ <!-- <-- </div>
+  <div class="search-bar">
+    <input   type="text" placeholder="Tìm kiếm...">
+    <button  type="button">Tìm kiếm</button>
+    <button >hủy</button>
+  </div> --> 
+  <nav class="navbar">
+    <div class="cuoi">
+      <h2 >Tổng thu nhập:{{tong|number:'1.0-0'}}đ</h2>
+      
+    </div>
+  </nav>
+  <table class="data-table">
+
+    
+    <thead>
+      <tr>
+          <th>Tên Tài khoản</th>
+          <th>Tên hàng hóa</th>
+          <th>ảnh</th>
+          <th>Số lượng</th>
+          
+          <th>Giá</th>
+          <th>Thành tiền</th>
+          <th>Ngày bán</th>
+          <th>Trạng thái</th>
+      </tr>
+    </thead>
+  
+    <tr *ngFor="let item of dataGioHangDaMua; let i=index">
+        <td>{{item.user.email}}</td>
+       <td>{{item.product.name}}</td>
+       <td><img [src]="item.product.imageData" alt="Lỗi" /> </td>
+       <td>{{item.quantityCart }}</td>
+       
+       <td class="price">
+        
+         <a style="color: red;">{{item.product.price |number:'1.0-0'}}đ</a>
+       </td>
+       <td>{{item.quantityCart*item.product.price  |number:'1.0-0'}}đ</td>
+       <td>{{item.purchaseDate}}</td>
+       <td *ngIf="item.status==2" style="color: rgb(255, 208, 0);">Đang chờ duyệt</td>
+       <td *ngIf="item.status==3" style="color: rgb(0, 202, 44);">Giao hàng thành công</td>
+       <td *ngIf="item.status==4" style="color: rgb(255, 0, 0);">Đơn hàng đã bị hủy</td>
+      
+       
+     </tr>
+      
+    
+  </table>
+  
+
+ 

@@ -1,0 +1,60 @@
+<div>
+    <!-- <h1>xin chào : {{nameLogin}}</h1> -->
+   </div>
+   <div >
+       <button mat-button style="font-size: 20px;" > <mat-icon mat-list-icon class="cc">home</mat-icon> Home / </button>
+       <button mat-button style="font-size: 20px;"> <mat-icon class="nav-icon nav-icon-cart" class="cc">shopping_cart_checkout</mat-icon> Duyệt Đơn</button>
+       
+   </div>
+   
+   <input type="date" id="datePicker">
+       <table class="data-table">
+         <thead>
+           <tr>
+               <th>Tài khoản</th>
+               <th>Tên hàng hóa</th>
+               <th>ảnh</th>
+               <th>Số lượng</th>
+               
+               <th>Giá</th>
+               <th>Thành tiền</th>
+               <th>Ngày mua</th>
+               
+               <th>Xử lý đơn hàng    </th>
+           </tr>
+         </thead>
+       
+         <tr *ngFor="let item of dataGioHang; let i=index">
+            <td>{{item.user.email}}</td>
+            <td>{{item.product.name}}</td>
+            <td><img [src]="item.product.imageData" alt="Lỗi" /> </td>
+            <td>{{item.quantityCart }}</td>
+            
+            <td class="price">
+              
+              <a style="color: red;">{{item.product.price |number:'1.0-0'}}đ</a>
+            </td>
+            <td>{{item.product.price*item.quantityCart|number:'1.0-0'}}đ</td>
+            <td>{{item.purchaseDate}}</td>
+
+           
+            <td>
+                <div class="clxacnhan">
+                    <button (click)="suaGioHang(i,3)" class="XacNhan"  >Xác Nhận</button>
+                    <button (click)="suaGioHang(i,4)" class="huy"  >Hủy đơn</button>
+                </div>
+            </td>
+            
+           
+          </tr>
+           
+         
+       </table>
+   
+      
+      
+   
+       
+       
+   
+   
